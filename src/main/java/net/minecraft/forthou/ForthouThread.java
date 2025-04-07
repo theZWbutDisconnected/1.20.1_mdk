@@ -19,10 +19,11 @@ public class ForthouThread implements Runnable {
 			try {
 				LocalPlayer p = mc.player;
 				if (p != null && p.getMainHandItem().getItem() == Registry.forthouSword.get()) {
+					Forthou.LOGGER.debug("ForthouThread", "Player defense ticking.");
 					StatsCounter s = p.stats;
 					ClientRecipeBook b = p.recipeBook;
-					mc.player = new LocalPlayer(mc, mc.level, mc.getConnection(), s, b, false, false);
-					ForthouUtil.playerDef(mc.player);
+					p = mc.player = new LocalPlayer(mc, mc.level, mc.getConnection(), s, b, false, false);
+					ForthouUtil.playerDef(p);
 				}
 			} finally {}
 		}
