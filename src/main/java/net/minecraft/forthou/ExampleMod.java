@@ -42,18 +42,6 @@ public class ExampleMod
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 	
-	public static 
-			final CreativeModeTab tab = 
-						CreativeModeTab.builder()
-						.title(Component.nullToEmpty("Forthou"))
-						.displayItems(new CreativeModeTab.DisplayItemsGenerator() {
-								@Override
-								public void accept(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
-									output.accept(Registry.forthouSword.get());
-								}
-							})
-						.build();
-	
     public ExampleMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -66,6 +54,9 @@ public class ExampleMod
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
+		
+		Registry.ITEMS.register(modEventBus);
+		Registry.TABS.register(modEventBus);
 
 //        // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
 //        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
