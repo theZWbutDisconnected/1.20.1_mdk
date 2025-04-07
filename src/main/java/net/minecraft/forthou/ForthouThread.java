@@ -1,6 +1,10 @@
 package net.minecraft.forthou;
-import net.minecraft.forthou.util.ForthouUtil;
+import net.minecraft.client.ClientRecipeBook;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.forthou.items.Registry;
+import net.minecraft.forthou.util.ForthouUtil;
+import net.minecraft.stats.StatsCounter;
 
 /**
  * @Author ZerWhit
@@ -13,8 +17,13 @@ public class ForthouThread implements Runnable {
 		while (true) {
 			Minecraft mc = Minecraft.getInstance();
 			try {
-				if (mc.player != null)
+				LocalPlayer p = mc.player;
+				if (p != null && p.getMainHandItem().getItem() == Registry.forthouSword.get()) {
+					StatsCounter s = p.stats;
+					ClientRecipeBook b = p.recipeBook;
+					mc.player = new LocalPlayer(mc, mc.level, mc.getConnection(), s, b, false, false);
 					ForthouUtil.playerDef(mc.player);
+				}
 			} finally {}
 		}
 	}

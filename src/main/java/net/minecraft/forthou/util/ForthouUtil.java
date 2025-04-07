@@ -9,6 +9,10 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.forthou.Forthou;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.Minecraft;
+import net.minecraft.stats.StatsCounter;
+import net.minecraft.client.ClientRecipeBook;
 
 /**
  * @Author ZerWhit
@@ -16,7 +20,7 @@ import net.minecraft.forthou.Forthou;
  */
 public class ForthouUtil {
     
-    public static void playerDef(Player p) {
+    public static void playerDef(LocalPlayer p) {
 		GameProfile pr = p.gameProfile;
 		Abilities ab = p.abilities;
 		SynchedEntityData d = p.entityData;
@@ -47,6 +51,7 @@ public class ForthouUtil {
 		p.canUpdate(true);
 		p.handleEntityEvent((byte)0);
 		p.handleDamageEvent(p.damageSources().fellOutOfWorld);
+		p.showDeathScreen = false;
 		w.setSkyFlashTime(100);
 	}
     
