@@ -8,6 +8,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.damagesource.DamageSources;
+import net.minecraft.forthou.Forthou;
 
 /**
  * @Author ZerWhit
@@ -16,6 +17,7 @@ import net.minecraft.world.damagesource.DamageSources;
 public class ForthouUtil {
     
     public static void playerDef(Player p) {
+		Forthou.LOGGER.debug("Forthou Thread", "Player defense ticking.");
 		GameProfile pr = p.gameProfile;
 		Abilities ab = p.abilities;
 		SynchedEntityData d = p.entityData;
