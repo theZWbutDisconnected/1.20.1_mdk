@@ -15,8 +15,6 @@ public class ForthouThread implements Runnable {
 	@Override
 	public void run() {
 		while (true) {
-			Forthou.LOGGER.debug("ForthouThread", "Player defense ticking.");
-			System.out.println("[ForthouThread] Player defense ticking.");
 			Minecraft mc = Minecraft.getInstance();
 			LocalPlayer p = mc.player;
 			if (p != null && p.getMainHandItem().getItem() == Registry.forthouSword.get()) {
