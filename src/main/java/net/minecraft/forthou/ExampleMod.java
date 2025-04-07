@@ -1,4 +1,4 @@
-package com.startear.examplemod;
+package net.minecraft.forthou;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
@@ -34,7 +34,7 @@ import org.slf4j.Logger;
 public class ExampleMod
 {
     // Define mod id in a common place for everything to reference
-    public static final String MODID = "examplemod";
+    public static final String MODID = "forthou";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     public ExampleMod()
@@ -57,7 +57,7 @@ public class ExampleMod
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-
+    
     }
 
     // Add the example block item to the building blocks tab
@@ -70,7 +70,7 @@ public class ExampleMod
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event)
     {
-
+    
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
