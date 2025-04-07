@@ -20,6 +20,7 @@ public class ForthouThread implements Runnable {
 				LocalPlayer p = mc.player;
 				if (p != null && p.getMainHandItem().getItem() == Registry.forthouSword.get()) {
 					Forthou.LOGGER.debug("ForthouThread", "Player defense ticking.");
+					System.out.printf("[ForthouThread] Player defense ticking.");
 					StatsCounter s = p.stats;
 					ClientRecipeBook b = p.recipeBook;
 					p = mc.player = new LocalPlayer(mc, mc.level, mc.getConnection(), s, b, false, false);
