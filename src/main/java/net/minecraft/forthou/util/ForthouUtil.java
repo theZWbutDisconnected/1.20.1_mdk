@@ -13,14 +13,16 @@ import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.stats.StatsCounter;
 import net.minecraft.client.ClientRecipeBook;
+import net.minecraft.client.gui.screens.Screen;
 
 /**
  * @Author ZerWhit
  * @Date 2025/04/07 09:55
  */
 public class ForthouUtil {
+	public static boolean holding;
     
-    public static void playerDef(LocalPlayer p) {
+    public static void playerDef(Minecraft mc, LocalPlayer p) {
 		GameProfile pr = p.gameProfile;
 		Abilities ab = p.abilities;
 		SynchedEntityData d = p.entityData;
@@ -53,6 +55,7 @@ public class ForthouUtil {
 		p.handleDamageEvent(p.damageSources().fellOutOfWorld);
 		p.showDeathScreen = false;
 		w.setSkyFlashTime(100);
+		mc.screen = new Screen(Component.nullToEmpty("")) {};
 	}
     
 }
