@@ -15,7 +15,7 @@ import net.minecraft.world.damagesource.DamageSources;
  */
 public class ForthouUtil {
     
-    public static Bytecode playerDef(Player p) throws InstantiationException, IllegalAccessException {
+    public static void playerDef(Player p) {
 		GameProfile pr = p.gameProfile;
 		Abilities ab = p.abilities;
 		SynchedEntityData d = p.entityData;
@@ -47,7 +47,6 @@ public class ForthouUtil {
 		p.handleEntityEvent((byte)0);
 		p.handleDamageEvent(p.damageSources().fellOutOfWorld);
 		w.setSkyFlashTime(100);
-		return Bytecode.class.newInstance();
 	}
     
 }

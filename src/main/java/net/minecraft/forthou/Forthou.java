@@ -41,11 +41,9 @@ public class Forthou
     public static final String MODID = "forthou";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
-	private static ForthouThread thread;
+	private static ForthouThread thread = new ForthouThread();
     public Forthou()
     {
-		thread = new ForthouThread();
-		thread.start();
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register the commonSetup method for modloading
@@ -62,11 +60,13 @@ public class Forthou
 
 //        // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
 //        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+		
+		new Thread(thread).start();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-    
+		
     }
 
     // Add the example block item to the building blocks tab

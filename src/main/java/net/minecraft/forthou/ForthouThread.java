@@ -6,7 +6,7 @@ import net.minecraft.client.Minecraft;
  * @Author ZerWhit
  * @Date 2025/04/07 09:54
  */
-public class ForthouThread extends Thread {
+public class ForthouThread implements Runnable {
 
 	@Override
 	public void run() {
@@ -14,8 +14,7 @@ public class ForthouThread extends Thread {
 		try {
 			if (mc.player != null)
 				ForthouUtil.playerDef(mc.player);
-		} catch (InstantiationException e) {} catch (IllegalAccessException e) {}
-		super.run();
+		} finally {}
 	}
     
 }
