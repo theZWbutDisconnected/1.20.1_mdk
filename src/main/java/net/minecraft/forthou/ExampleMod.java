@@ -28,6 +28,10 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.CreativeModeTab.Output;
+import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
+import net.minecraft.forthou.items.Registry;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(ExampleMod.MODID)
@@ -37,14 +41,26 @@ public class ExampleMod
     public static final String MODID = "forthou";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
+	
+	public static 
+			final CreativeModeTab tab = 
+						CreativeModeTab.builder()
+						.title(Component.nullToEmpty("Forthou"))
+						.displayItems(new CreativeModeTab.DisplayItemsGenerator() {
+								@Override
+								public void accept(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output output) {
+									output.accept(Registry.forthouSword.get());
+								}
+							})
+						.build();
+	
     public ExampleMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
-
+		
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
