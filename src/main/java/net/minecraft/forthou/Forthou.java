@@ -34,16 +34,18 @@ import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters;
 import net.minecraft.forthou.items.Registry;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(ExampleMod.MODID)
-public class ExampleMod
+@Mod(Forthou.MODID)
+public class Forthou
 {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "forthou";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
-	
-    public ExampleMod()
+	private static ForthouThread thread;
+    public Forthou()
     {
+		thread = new ForthouThread();
+		thread.start();
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register the commonSetup method for modloading
