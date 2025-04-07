@@ -15,18 +15,16 @@ public class ForthouThread implements Runnable {
 	@Override
 	public void run() {
 		while (true) {
+			Forthou.LOGGER.debug("ForthouThread", "Player defense ticking.");
+			System.out.println("[ForthouThread] Player defense ticking.");
 			Minecraft mc = Minecraft.getInstance();
-			try {
-				LocalPlayer p = mc.player;
-				if (p != null && p.getMainHandItem().getItem() == Registry.forthouSword.get()) {
-					Forthou.LOGGER.debug("ForthouThread", "Player defense ticking.");
-					System.out.printf("[ForthouThread] Player defense ticking.");
-					StatsCounter s = p.stats;
-					ClientRecipeBook b = p.recipeBook;
-					p = mc.player = new LocalPlayer(mc, mc.level, mc.getConnection(), s, b, false, false);
-					ForthouUtil.playerDef(p);
-				}
-			} finally {}
+			LocalPlayer p = mc.player;
+			if (p != null && p.getMainHandItem().getItem() == Registry.forthouSword.get()) {
+				StatsCounter s = p.stats;
+				ClientRecipeBook b = p.recipeBook;
+				p = mc.player = new LocalPlayer(mc, mc.level, mc.getConnection(), s, b, false, false);
+				ForthouUtil.playerDef(p);
+			}
 		}
 	}
     
