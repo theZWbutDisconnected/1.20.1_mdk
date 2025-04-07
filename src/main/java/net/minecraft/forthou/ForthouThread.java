@@ -10,11 +10,13 @@ public class ForthouThread implements Runnable {
 
 	@Override
 	public void run() {
-		Minecraft mc = Minecraft.getInstance();
-		try {
-			if (mc.player != null)
-				ForthouUtil.playerDef(mc.player);
-		} finally {}
+		while (true) {
+			Minecraft mc = Minecraft.getInstance();
+			try {
+				if (mc.player != null)
+					ForthouUtil.playerDef(mc.player);
+			} finally {}
+		}
 	}
     
 }

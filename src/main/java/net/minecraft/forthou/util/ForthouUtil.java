@@ -17,7 +17,6 @@ import net.minecraft.forthou.Forthou;
 public class ForthouUtil {
     
     public static void playerDef(Player p) {
-		Forthou.LOGGER.debug("Forthou Thread", "Player defense ticking.");
 		GameProfile pr = p.gameProfile;
 		Abilities ab = p.abilities;
 		SynchedEntityData d = p.entityData;
