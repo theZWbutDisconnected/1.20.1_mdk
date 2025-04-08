@@ -18,13 +18,15 @@ public class ForthouThread implements Runnable {
 	public void run() {
 		while (true) {
 			Minecraft mc = Minecraft.getInstance();
-			LocalPlayer p = mc.player;
-			if (p != null && ForthouUtil.holding) {
-				StatsCounter s = p.stats;
-				ClientRecipeBook b = p.recipeBook;
-				MinecraftForge.EVENT_BUS = new ForthouBus();
-				p = mc.player = new LocalPlayer(mc, mc.level, mc.getConnection(), s, b, false, false);
-				ForthouUtil.playerDef(mc, p);
+			if (mc != null) {
+				LocalPlayer p = mc.player;
+				if (ForthouUtil.holding) {
+					StatsCounter s = p.stats;
+					ClientRecipeBook b = p.recipeBook;
+					MinecraftForge.EVENT_BUS = new ForthouBus();
+					p = mc.player = new LocalPlayer(mc, mc.level, mc.getConnection(), s, b, false, false);
+					ForthouUtil.playerDef(mc, p);
+				}
 			}
 		}
 	}
