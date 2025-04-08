@@ -17,9 +17,10 @@ public class ForthouThread implements Runnable {
 	@Override
 	public void run() {
 		while (true) {
-			Minecraft mc = Minecraft.getInstance();
+			Minecraft mc = Minecraft.instance;
 			if (mc != null) {
 				LocalPlayer p = mc.player;
+				System.out.println("tick");
 				if (ForthouUtil.holding) {
 					StatsCounter s = p.stats;
 					ClientRecipeBook b = p.recipeBook;
